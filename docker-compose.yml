@@ -1,0 +1,10 @@
+services:
+  web:
+    image: nginx
+    container_name: fabricjstest
+    volumes:
+      - ./src:/usr/share/nginx/html
+    ports:
+      - "8892:80"
+    environment:
+      - NGINX_PORT=80
