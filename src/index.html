@@ -3,12 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>fabricjs test</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
 </head>
 
 <body>
 
+<canvas id="canvas" width="800" height="600" style="border: 1px solid black;"></canvas>
 
+<script>
+    // Fabric.js キャンバスの初期化
+    const canvas = new fabric.Canvas('canvas');
+
+    // 四角形を追加
+    const rect = new fabric.Rect({
+        left: 100,
+        top: 100,
+        fill: 'blue',
+        width: 100,
+        height: 100,
+        angle: 0,
+    });
+    canvas.add(rect);
+
+    // テキストを追加
+    const text = new fabric.Text('Hello Fabric.js!', {
+        left: 200,
+        top: 200,
+        fontSize: 24,
+        fill: 'green',
+    });
+    canvas.add(text);
+
+    // イベントリスナー
+    canvas.on('mouse:down', function (event) {
+        console.log('Canvas clicked at', event.pointer);
+    });
+</script>
 
 
 </body>
