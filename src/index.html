@@ -38,6 +38,49 @@
     canvas.on('mouse:down', function (event) {
         console.log('Canvas clicked at', event.pointer);
     });
+    
+
+    // 付箋の背景
+    const stickyNote = new fabric.Rect({
+        left: 150,
+        top: 150,
+        fill: 'yellow',
+        width: 200,
+        height: 150,
+        cornerRadius: 10, // Fabric.jsでは `cornerRadius` がデフォルトサポートされていないため要カスタム
+    });
+
+    // 付箋のテキスト
+    const noteText = new fabric.Textbox('This is a sticky note!', {
+        left: 160,
+        top: 160,
+        fontSize: 18,
+        width: 180,
+        fill: 'black',
+    });
+
+    // グループ化して付箋を一つのオブジェクトとして扱う
+    const stickyNoteGroup = new fabric.Group([stickyNote, noteText], {
+        left: 150,
+        top: 150,
+        lockRotation: true, // 回転禁止 (必要ならコメントアウト)
+    });
+
+    // キャンバスに追加
+    canvas.add(stickyNoteGroup);
+
+    // リサイズ、移動、回転の有効化 (Fabric.jsの標準機能)
+    stickyNoteGroup.set({
+        lockUniScaling: false, // 幅と高さを個別に変更可能にする
+    });
+
+    // 描画更新
+    canvas.renderAll();
+
+    // イベントリスナー: サイズや位置を変更した後に更新
+    canvas.on('object:modified', (event) => {
+        console.log('Object modified:', event.target);
+    });
 </script>
 
 
