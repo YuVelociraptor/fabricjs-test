@@ -8,11 +8,13 @@
 
 <body>
 
-<canvas id="canvas" width="800" height="600" style="border: 1px solid black;"></canvas>
+<div id="canvas-container" style="position: relative; width: 500px; height: 500px;">
+    <canvas id="fabric-layer" width="800" height="600" style="border: 1px solid black;"></canvas>
+</div>
 
 <script>
     // Fabric.js キャンバスの初期化
-    const canvas = new fabric.Canvas('canvas');
+    const canvas = new fabric.Canvas('fabric-layer');
 
     // 四角形を追加
     const rect = new fabric.Rect({
@@ -38,7 +40,7 @@
     canvas.on('mouse:down', function (event) {
         console.log('Canvas clicked at', event.pointer);
     });
-    
+
 
     // 付箋の背景
     const stickyNote = new fabric.Rect({
