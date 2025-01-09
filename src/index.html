@@ -9,12 +9,24 @@
 <body>
 
 <div id="canvas-container" style="position: relative; width: 500px; height: 500px;">
-    <canvas id="fabric-layer" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <canvas id="canvas0" width="800" height="600" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
+    <canvas id="canvas1" width="800" height="600" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
 </div>
 
 <script>
+    const canvas0 = new fabric.Canvas('canvas0');
+    const r = new fabric.Rect({
+        left: 50,
+        top: 50,
+        fill: '#ffddff',
+        width: canvas0.width,
+        height: canvas0.height,
+        angle: 0,
+    });
+    canvas0.add(r);
+
     // Fabric.js キャンバスの初期化
-    const canvas = new fabric.Canvas('fabric-layer');
+    const canvas1 = new fabric.Canvas('canvas1');
 
     // 四角形を追加
     const rect = new fabric.Rect({
@@ -25,7 +37,7 @@
         height: 100,
         angle: 0,
     });
-    canvas.add(rect);
+    canvas1.add(rect);
 
     // テキストを追加
     const text = new fabric.Text('Hello Fabric.js!', {
@@ -34,10 +46,10 @@
         fontSize: 24,
         fill: 'green',
     });
-    canvas.add(text);
+    canvas1.add(text);
 
     // イベントリスナー
-    canvas.on('mouse:down', function (event) {
+    canvas1.on('mouse:down', function (event) {
         console.log('Canvas clicked at', event.pointer);
     });
 
@@ -69,7 +81,7 @@
     });
 
     // キャンバスに追加
-    canvas.add(stickyNoteGroup);
+    canvas1.add(stickyNoteGroup);
 
     // リサイズ、移動、回転の有効化 (Fabric.jsの標準機能)
     stickyNoteGroup.set({
@@ -77,10 +89,10 @@
     });
 
     // 描画更新
-    canvas.renderAll();
+    canvas1.renderAll();
 
     // イベントリスナー: サイズや位置を変更した後に更新
-    canvas.on('object:modified', (event) => {
+    canvas1.on('object:modified', (event) => {
         console.log('Object modified:', event.target);
     });
 </script>
