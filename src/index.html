@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <title>fabricjs test</title>
     <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
-    <style>
-        .layer-wrap > div.canvas-container   {
-            position: absolute !important;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 
 <body>
@@ -33,26 +29,6 @@
 
     // Fabric.js キャンバスの初期化
     const canvas1 = new fabric.Canvas('canvas1');
-
-    // 四角形を追加
-    const rect = new fabric.Rect({
-        left: 100,
-        top: 100,
-        fill: 'blue',
-        width: 100,
-        height: 100,
-        angle: 0,
-    });
-    canvas1.add(rect);
-
-    // テキストを追加
-    const text = new fabric.Text('Hello Fabric.js!', {
-        left: 200,
-        top: 200,
-        fontSize: 24,
-        fill: 'green',
-    });
-    canvas1.add(text);
 
     // イベントリスナー
     canvas1.on('mouse:down', function (event) {
