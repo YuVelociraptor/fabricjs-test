@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <title>fabricjs test</title>
     <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
+    <style>
+        .layer-wrap > div.canvas-container   {
+            position: absolute !important;
+        }
+    </style>
 </head>
 
 <body>
 
 
-<div id="canvas-container" style="position: relative; width: 500px; height: 500px;">
+<div id="canvas-container" class="layer-wrap" style="position: relative; width: 500px; height: 500px;">
     <canvas id="canvas0" width="500" height="500" style="position: absolute; left: 0; top: 0; z-index: 1;"></canvas>
     <canvas id="canvas1" width="500" height="500" style="position: absolute; left: 0; top: 0; z-index: 2;"></canvas>
 </div>

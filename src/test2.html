@@ -9,7 +9,9 @@
             height: 240px;
             position: relative;
         }
-
+        .layer-wrap > div.canvas-container   {
+            position: absolute !important;
+        }
         .layer-wrap > canvas {
             position: absolute !important;
         }
@@ -23,11 +25,36 @@
             border-left: 20px solid royalblue;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/fabric@latest/dist/index.min.js"></script>
 </head>
 <body>
 <div class="layer-wrap">
     <canvas id="cvs1" width="300" height="240"></canvas>
     <canvas id="cvs2" width="300" height="240"></canvas>
 </div>
+<script>
+    var canvas1 = new fabric.Canvas('cvs1'),
+        canvas2 = new fabric.Canvas('cvs2');
+
+    //レイヤー1
+    canvas1.add(new fabric.Text('1', {
+        fontFamily: 'Meyrio',
+        fontSize: 72,
+        fill: 'blue',
+        textBackgroundColor: 'lightblue',
+        left: 80,
+        top: 60
+    }));
+
+    //レイヤー2
+    canvas2.add(new fabric.Text('2', {
+        fontFamily: 'Meyrio',
+        fontSize: 72,
+        fill: 'blue',
+        textBackgroundColor: 'lightblue',
+        left: 160,
+        top: 100
+    }));
+</script>
 </body>
 </html>
