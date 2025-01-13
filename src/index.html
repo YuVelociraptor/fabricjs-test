@@ -17,15 +17,19 @@
 
 <script>
     const canvas0 = new fabric.Canvas('canvas0');
-    const r = new fabric.Rect({
-        left: 50,
-        top: 50,
-        fill: '#ffddff',
-        width: canvas0.width,
-        height: canvas0.height,
-        angle: 0,
-    });
-    canvas0.add(r);
+
+    for(let i = 0; i < 10; i++) {
+        const r = new fabric.Rect({
+            left: 10 + i * 10,
+            top: 20 + i * 10,
+            fill: '#ffddff',
+            width: 10,
+            height: 10,
+            angle: 0,
+        });
+        canvas0.add(r);
+
+    }
 
     // Fabric.js キャンバスの初期化
     const canvas1 = new fabric.Canvas('canvas1');
@@ -36,16 +40,6 @@
     });
 
 
-    // 付箋の背景
-    const stickyNote = new fabric.Rect({
-        left: 150,
-        top: 150,
-        fill: 'yellow',
-        width: 200,
-        height: 150,
-        cornerRadius: 10, // Fabric.jsでは `cornerRadius` がデフォルトサポートされていないため要カスタム
-    });
-
     // 付箋のテキスト
     const noteText = new fabric.Textbox('This is a sticky note!', {
         left: 160,
@@ -53,22 +47,14 @@
         fontSize: 18,
         width: 180,
         fill: 'black',
+        backgroundColor: 'yellow',
+        editable: true,
     });
 
-    // グループ化して付箋を一つのオブジェクトとして扱う
-    const stickyNoteGroup = new fabric.Group([stickyNote, noteText], {
-        left: 150,
-        top: 150,
-        lockRotation: true, // 回転禁止 (必要ならコメントアウト)
-    });
+
 
     // キャンバスに追加
-    canvas1.add(stickyNoteGroup);
-
-    // リサイズ、移動、回転の有効化 (Fabric.jsの標準機能)
-    stickyNoteGroup.set({
-        lockUniScaling: false, // 幅と高さを個別に変更可能にする
-    });
+    canvas1.add(noteText);
 
     // 描画更新
     canvas1.renderAll();
