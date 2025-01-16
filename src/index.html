@@ -18,6 +18,17 @@
 <script>
     const canvas0 = new fabric.Canvas('canvas0');
 
+    const b = new fabric.Rect({
+        left: 0,
+        top: 0,
+        fill: '#ddddff',
+        width: canvas0.width,
+        height: canvas0.height,
+        angle: 0,
+    });
+
+    canvas0.add(b);
+
     for(let i = 0; i < 10; i++) {
         const r = new fabric.Rect({
             left: 10 + i * 10,
@@ -34,10 +45,21 @@
     // Fabric.js キャンバスの初期化
     const canvas1 = new fabric.Canvas('canvas1');
 
+
+    const button = new fabric.Rect({
+        left: 10,
+        top: 10,
+        width: 100,
+        height: 50,
+        fill: 'red',
+    });
+
     // イベントリスナー
     canvas1.on('mouse:down', function (event) {
         console.log('Canvas clicked at', event.pointer);
     });
+
+    canvas1.add(button);
 
 
     // 付箋のテキスト
