@@ -13,14 +13,15 @@ onMounted(async () => {
   fabric0 = new fabric.Canvas(canvas0.value)
   fabric1 = new fabric.Canvas(canvas1.value)
 
-  const rect = new fabric.Rect({
-    left: 100,
-    top: 100,
-    fill: 'red',
-    width: 50,
-    height: 50,
+  const r = new fabric.Rect({
+    left: 50,
+    top: 50,
+    fill: '#ffddff',
+    width: 500,
+    height: 500,
+    angle: 0,
   })
-  fabric0.add(rect)
+  fabric0.add(r)
 
   const rect2 = new fabric.Rect({
     left: 150,
@@ -42,5 +43,7 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-
+.layer-wrap > div.canvas-container   {
+  position: absolute !important;
+}
 </style>
