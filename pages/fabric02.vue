@@ -13,23 +13,17 @@ onMounted(async () => {
   canvas2 = new fabric.Canvas(cvs2.value)
 
   //レイヤー1
-  canvas1.add(new fabric.Text('1', {
-    fontFamily: 'Meyrio',
-    fontSize: 72,
-    fill: 'blue',
-    textBackgroundColor: 'lightblue',
-    left: 80,
-    top: 60
-  }))
+  const r = new fabric.Rect({
+    left: 50,
+    top: 50,
+    fill: '#ffddff',
+    width: 100,
+    height: 100,
+    angle: 0,
+  })
+  canvas1.add(r)
 
-  canvas2.add(new fabric.Text('2', {
-    fontFamily: 'Meyrio',
-    fontSize: 72,
-    fill: 'blue',
-    textBackgroundColor: 'lightblue',
-    left: 160,
-    top: 100
-  }))
+  canvas2.add(r)
 })
 </script>
 
